@@ -42,3 +42,9 @@ spec:
              port: nignxport2012
            initialDelaySeconds: 15
            timeoutSeconds: 30
+          readinessProbe:
+           httpGet:
+             path: /
+             port: nignxport2012
+           initialDelaySeconds: 15
+           timeoutSeconds: 30
