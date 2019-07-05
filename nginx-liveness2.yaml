@@ -34,11 +34,11 @@ spec:
         - name: nginx-odoo2019
           image: nginx
           ports:
-          - containerPort: 80
+          - name: nignxport2012
+            containerPort: 80
           livenessProbe:
            httpGet:
-             path:/
-             port:80
+             path: /
+             port: nignxport2012
            initialDelaySeconds: 15
            timeoutSeconds: 30
-          
