@@ -7,6 +7,13 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: IfNotPresent
+    livenessProbe:
+      httpGet:
+        path:/
+        port:80
+      initialDelaySeconds: 15
+      timeoutSeconds: 30    
+
   nodeSelector:
     disktype: ssd
 ---
@@ -22,9 +29,3 @@ spec:
   - port: 80
     targetPort: 80
     nodePort: 31000
-  livenessProbe:
-     httpGet:
-      path:/
-      port:80
-     initialDelaySeconds: 15
-     timeoutSeconds: 30    
