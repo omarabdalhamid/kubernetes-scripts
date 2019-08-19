@@ -10,6 +10,17 @@ spec:
     image: nginx:1.7.9
     ports:
     - containerPort: 80
+    volumeMounts:
+    - name: ndefault
+        mountPath: /usr/share/nginx/html/index.html    
+  volumes:
+   - name: ndefault
+     configMap:
+       name: ngindex
+       items:
+       -  key: nginindex
+          path: index.html        
+        
 ---
 apiVersion: v1
 kind: Service
