@@ -35,7 +35,7 @@ spec:
           image: nginx
           volumeMounts:
            - name: ndefault
-             mountPath: /usr/share/nginx/html/index.html
+              mountPath: /usr/share/nginx/html/index.html
           ports:
            - name: nignxport2012
              containerPort: 80
