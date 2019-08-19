@@ -16,7 +16,7 @@ metadata:
   labels:
    app-svc: nginx-pod
 spec:
-   type: loadbalancer
+   type: LoadBalancer
    ports:
    - port: 8089
      nodePort: 31001
