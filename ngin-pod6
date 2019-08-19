@@ -12,7 +12,7 @@ spec:
     - containerPort: 80
     volumeMounts:
     - name: ndefault
-        mountPath: /usr/share/nginx/html/index.html    
+      mountPath: /usr/share/nginx/html/index.html    
   volumes:
    - name: ndefault
      configMap:
