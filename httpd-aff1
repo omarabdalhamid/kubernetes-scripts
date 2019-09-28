@@ -11,6 +11,15 @@ spec:
       labels:
         app: httpd-d-s
     spec:
+      affinity:
+       nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: env
+              operator: In
+              values:
+              - dev
       containers:
       - name: httpd-d-s
         image: httpd
@@ -20,15 +29,7 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: env
-            operator: In
-            values:
-            - dev
+
 ---
 apiVersion: v1
 kind: Service
