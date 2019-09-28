@@ -36,7 +36,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: httpd-d-s
-  namespace :default
+  namespace: default
 spec:
   selector:
     app: httpd-d-s
