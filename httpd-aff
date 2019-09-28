@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-d-s
+spec:
+  selector:
+    matchLabels:
+      app: httpd-d-s
+  template:
+    metadata:
+      labels:
+        app: httpd-d-s
+    spec:
+      containers:
+      - name: httpd-d-s
+        image: httpd
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: env
+            operator: In
+            values:
+            - dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-d-s
+spec:
+  selector:
+    app: httpd-d-s
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 31003
