@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpd-d-s
+  name: nginx-d-s
   namespace : default
 spec:
   selector:
     matchLabels:
-      app: httpd-d-s
+      app: nginx-d-s
   template:
     metadata:
       labels:
-        app: httpd-d-s
+        app: nginx-d-s
     spec:
       affinity:
        nodeAffinity:
@@ -22,8 +22,8 @@ spec:
               values:
               - dev
       containers:
-      - name: httpd-d-s
-        image: httpd
+      - name: nginx-d-s
+        image: nginx
         resources:
           limits:
             memory: "128Mi"
@@ -35,13 +35,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: httpd-d-s
+  name: nginx-d-s
   namespace: default
 spec:
   selector:
-    app: httpd-d-s
+    app: nginx-d-s
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 31003
+    nodePort: 31004
